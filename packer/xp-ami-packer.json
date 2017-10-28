@@ -1,0 +1,36 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": ""
+  },
+  "_comment": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "eu-central-1",
+    "source_ami_filter": {
+      "filters": {
+      "virtualization-type": "hvm",
+      "name": "ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-20170721",
+      "root-device-type": "ebs"
+      },
+      "most_recent": true
+    },
+    "subnet_id": "subnet-f1e92d8a",
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+    "ami_name": "xpdays-ami {{timestamp}}"
+  }],
+  "provisioners": [
+  {
+    "type": "file",
+    "source": "./configs",
+    "destination": "/tmp/"
+  },
+  {
+    "type": "shell",
+    "script": "provision-ami.sh"
+  }
+  ]
+}
