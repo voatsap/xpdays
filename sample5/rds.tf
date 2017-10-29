@@ -1,6 +1,6 @@
 resource "aws_db_subnet_group" "default_db_subnet_group" {
   name       = "main"
-  subnet_ids = ["${var.default_db_subnet_group_subnet_ids[var.region]}"]
+  subnet_ids = ["${aws_subnet.default_subnet.id}","${aws_subnet.default_db_subnet.id}"]
   tags {
     Name = "Default DB subnet group"
   }
