@@ -1,7 +1,6 @@
 ## XPDays 2017 Building with Terraform code samples
 
-The presentation could be found here:
-https://docs.google.com/presentation/d/1ZYWxuzoPwWyzmrM-GJvCnP8DurLZqGRLg-xYMHO4JIw/edit?usp=sharing
+The presentation could be found [here](https://docs.google.com/presentation/d/1ZYWxuzoPwWyzmrM-GJvCnP8DurLZqGRLg-xYMHO4JIw/edit?usp=sharing)
 
 ### Sample1. Creating Ubuntu instance using one file
 
