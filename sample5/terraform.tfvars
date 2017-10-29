@@ -17,4 +17,19 @@ default_db_subnet_group_subnet_ids = {
 }
 
 #
-instance_suffix = ["blue","green"] 
+instance_suffix = ["blue","green"]
+
+
+instance_count_xpdays_desired = {
+	        production = 1 
+	        development = 1
+}
+instance_count_xpdays_min = {
+	        production = 1
+	        development = 1
+}
+instance_count_xpdays_max = {
+	        production = 3
+	        development = 1
+}
+
