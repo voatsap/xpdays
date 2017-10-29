@@ -1,4 +1,4 @@
-#  Sample2. Creating ubuntu instance using set of files
+#  Sample3. Deploy a sample application, using RDS
   
 1.  Build custom image using packer. Build/redeploy workflow
 2.  Deploy a sample application using *user_data*
