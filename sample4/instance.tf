@@ -1,11 +1,6 @@
-## Define provider
-provider "aws" {
-	region = "${var.region}"
-}
-
 # Template for initial configuration bash script
 data "template_file" "init" {
-  template = "${file("init.tpl")}"
+  template = "${file("files/init.tpl")}"
   count = "${length(var.instance_suffix)}"
   
   vars {

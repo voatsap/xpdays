@@ -5,7 +5,7 @@
 3.  Created variable files: terraform.tfvars, variables.tf
 4.  Example for list element selection in *vpc_security_group_ids*
 5.  Example for map element lookup in *instance_type*
-
+6.  Add metadata variable count
 ```
 # setup your AMS access parameters in ~/.aws
 
