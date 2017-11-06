@@ -1,4 +1,8 @@
-# VPC related stuff
+## Application version stuff
+
+variable "xpdays_versiontag" {}
+
+## VPC related stuff
 
 variable "region" {
   type        = "map"

@@ -8,10 +8,27 @@ module "m-elb-xpdays" {
   backend_port     = "3334"
   backend_protocol = "http"
 
-  #  ssl_certificate_id = "${data.aws_acm_certificate.wisehands.me.arn}"
+  ssl_certificate_id = "${data.aws_acm_certificate.star-shalb-com.arn}"
   health_check_target = "HTTP:3334/"
 
   #  elb_security_group = "${aws_security_group.elb-sg.id}"
+}
+
+# Get the certificate assigned
+data "aws_acm_certificate" "star-shalb-com" {
+    domain   = "*.aws.shalb.com"
+    statuses = ["ISSUED"]
+
+}
+
+# Attach the domain to ELB
+
+resource "aws_route53_record" "xpdays-aws-shalb-com" {
+  zone_id = "Z36XQDCMS0HHZM"
+  name    = "xpdays.aws.shalb.com"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["${module.m-elb-xpdays.elb_dns_name}"]
 }
 
 ## Add rule for access to ELB SG into default SG

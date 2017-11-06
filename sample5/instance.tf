@@ -6,6 +6,7 @@ data "template_file" "init" {
   vars {
     dbendpoint="${aws_db_instance.db-instance.username}:${aws_db_instance.db-instance.password}@${aws_db_instance.db-instance.endpoint}\\/${aws_db_instance.db-instance.name}"
     instancehostname="xpdays-${var.instance_suffix[count.index]}-${count.index}"
+    versiontag="${var.xpdays_versiontag}"
   }
 }
 
@@ -23,19 +24,19 @@ resource "aws_launch_configuration" "launch-xpdays" {
 
 ## Add Autoscaling group
 resource "aws_autoscaling_group" "asg-xpdays" {
-#    lifecycle { create_before_destroy = true }
-#    depends_on = ["aws_launch_configuration.launch-xpdays"]
+    lifecycle { create_before_destroy = true }
+    name                      = "asg-${aws_launch_configuration.launch-xpdays.name}-${var.instance_suffix[count.index]}"
+    
     desired_capacity          = "${lookup(var.instance_count_xpdays_desired, var.environment)}"
     max_size                  = "${lookup(var.instance_count_xpdays_max, var.environment)}"
     min_size                  = "${lookup(var.instance_count_xpdays_min, var.environment)}"
     health_check_grace_period = 300
     health_check_type         = "EC2"
     launch_configuration      = "${element(aws_launch_configuration.launch-xpdays.*.name, count.index)}"
-    name                      = "asg-xpdays-${var.instance_suffix[count.index]}"
     vpc_zone_identifier       =  ["${list(aws_subnet.default_subnet.id)}"]
     availability_zones        = ["${lookup(var.default_subnet_availability_zone, var.environment)}"]
     load_balancers            =  ["${module.m-elb-xpdays.elb_id}"]
-#    wait_for_elb_capacity     = "${element(var.instance_count_xpdays_desired[var.environment],count.index)}"
+    wait_for_elb_capacity     = "${lookup(var.instance_count_xpdays_min, var.environment)}"
     enabled_metrics = "${var.asg_enabled_metrics}"
     tag {
         key   = "Name"

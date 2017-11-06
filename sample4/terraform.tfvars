@@ -16,5 +16,5 @@ default_db_subnet_group_subnet_ids = {
      eu-west-1 = [ "subnet-f1e92d8a", "subnet-304b7f7a"  ]
 }
 
-#
-instance_suffix = ["a","b"] 
+# Define instance suffix
+instance_suffix = ["blue","green"] 

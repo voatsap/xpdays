@@ -28,13 +28,13 @@ The presentation could be found [here](https://docs.google.com/presentation/d/1Z
   
 1.  Moving deployment script into temlplate provider
 2.  Using *length()* function to get size and create multiple resources
+3.  Add IAM profile for instance
 
 ### Sample5. Scaling our applications, adding scaling policies
   
-1.  Add IAM profile for instance
-2.  Creating launch configuration, autoscaling grops
-3.  Building module
-4.  Dealing with LoadBalancers and http
+1.  Creating launch configuration, autoscaling grops
+2.  Building module
+3.  Dealing with LoadBalancers and Certificates
 
 ### AppendixA.  Upgrading applications environment
 1.  Blue/Green deployment

@@ -13,9 +13,9 @@ variable "elb_is_internal" {
 
 // See README.md for details on finding the
 // ARN of an SSL certificate in EC2
-#variable "ssl_certificate_id" {
-#  description = "The ARN of the SSL Certificate in EC2"
-#}
+variable "ssl_certificate_id" {
+  description = "The ARN of the SSL Certificate in EC2"
+}
 
 variable "subnet_az1" {
   description = "The subnet for AZ1"

@@ -4,13 +4,13 @@ resource "aws_elb" "elb" {
   internal        = "${var.elb_is_internal}"
   security_groups = ["${aws_security_group.elb-sg.id}"]
 
-  #  listener {
-  #    instance_port = "${var.backend_port}"
-  #    instance_protocol = "${var.backend_protocol}"
-  #    lb_port = 443
-  #    lb_protocol = "https"
-  # #   ssl_certificate_id = "${var.ssl_certificate_id}"
-  #  }
+    listener {
+      instance_port = "${var.backend_port}"
+      instance_protocol = "${var.backend_protocol}"
+      lb_port = 443
+      lb_protocol = "https"
+      ssl_certificate_id = "${var.ssl_certificate_id}"
+    }
 
   listener {
     instance_port     = "${var.backend_port}"

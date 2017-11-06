@@ -1,3 +1,7 @@
+## Define the microservice version
+
+xpdays_versiontag = "0.0.2"
+
 ### AWS related
 
 region = {
@@ -44,7 +48,8 @@ asg_enabled_metrics = [ "GroupDesiredCapacity", "GroupPendingInstances", "GroupI
                         "GroupStandbyInstances", "GroupTotalInstances", "GroupMinSize" , "GroupTerminatingInstances" ]
 
 #
-instance_suffix = ["blue","green"]
+instance_suffix = ["blue"]
+#instance_suffix = ["blue","green"]
 
 
 instance_count_xpdays_desired = {
@@ -52,7 +57,7 @@ instance_count_xpdays_desired = {
 	        development = 1
 }
 instance_count_xpdays_min = {
-	        production = 0
+	        production = 1
 	        development = 1
 }
 instance_count_xpdays_max = {
