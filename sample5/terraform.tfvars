@@ -48,8 +48,8 @@ asg_enabled_metrics = [ "GroupDesiredCapacity", "GroupPendingInstances", "GroupI
                         "GroupStandbyInstances", "GroupTotalInstances", "GroupMinSize" , "GroupTerminatingInstances" ]
 
 #
-instance_suffix = ["blue"]
-#instance_suffix = ["blue","green"]
+#instance_suffix = ["blue"]
+instance_suffix = ["blue","green"]
 
 
 instance_count_xpdays_desired = {

@@ -25,7 +25,7 @@ resource "aws_launch_configuration" "launch-xpdays" {
 ## Add Autoscaling group
 resource "aws_autoscaling_group" "asg-xpdays" {
     lifecycle { create_before_destroy = true }
-    name                      = "asg-${aws_launch_configuration.launch-xpdays.name}-${var.instance_suffix[count.index]}"
+    name                      = "asg-${var.instance_suffix[count.index]}-${element(aws_launch_configuration.launch-xpdays.*.name, count.index)}"
     
     desired_capacity          = "${lookup(var.instance_count_xpdays_desired, var.environment)}"
     max_size                  = "${lookup(var.instance_count_xpdays_max, var.environment)}"
